@@ -14,8 +14,8 @@ import javax.annotation.Resource;
 @RestController
 public class OrderNacosController {
 
-//    @Resource
-//    private RestTemplate restTemplate;
+    @Resource
+    private RestTemplate restTemplate;
 
     @Value("${service-url.nacos-user-service}")
     private String serverURL;
@@ -24,14 +24,14 @@ public class OrderNacosController {
     private PaymentFeignService paymentFeignService;
 
 
-//    @GetMapping("/consumer/payment/nacos/{id}")
-//    public String paymentInfo(@PathVariable("id") Long id){
-//        return restTemplate.getForObject(serverURL + "/payment/nacos/" + id, String.class);
-//    }
-
-    @GetMapping("/consumer/payment/feign/nacos/{id}")
-    public String paymentInfo2(@PathVariable("id") Integer id){
-        return paymentFeignService.getPayment(id);
+    @GetMapping("/consumer/payment/nacos/{id}")
+    public String paymentInfo(@PathVariable("id") Long id){
+        return restTemplate.getForObject(serverURL + "/payment/nacos/" + id, String.class);
     }
+
+//    @GetMapping("/consumer/payment/feign/nacos/{id}")
+//    public String paymentInfo2(@PathVariable("id") Integer id){
+//        return paymentFeignService.getPayment(id);
+//    }
 
 }
